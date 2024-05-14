@@ -1,0 +1,66 @@
+<ion-header class="cabecera">
+  <div class="container">
+    <div>Sistema de inventario</div>
+  </div>
+</ion-header>
+
+<ion-content>
+  <div class="padding">
+
+    <div class="row text-center logo-home">
+      <div class="col-md-12">
+        <br><br>
+          <img src="assets/logo.png" class="img-fluid">
+        <br><br>
+      </div>
+    </div>
+
+    <form [formGroup]="loginForm" (ngSubmit)="doLogin(loginForm.value)" class="form-home">
+      <ion-list>
+        <div class="container" style="background-color: #fff">
+          <div class="col-md-12">
+            <ion-label>EMAIL</ion-label>
+            <input
+              type="email"
+              formControlName="email"
+              name="email"
+              class="form-control"
+            />
+          </div>
+        </div>
+
+        <div class="container" style="background-color: #fff">
+          <div class="col-md-12">
+            <ion-label>PASSWORD</ion-label>
+            <input
+              type="password"
+              formControlName="password"
+              name="password"
+              class="form-control"
+            />
+          </div>
+        </div>
+
+        <div class="container" style="background-color: #fff">
+          <br><br>
+          <div class="col-md-12 text-center">
+
+
+          <!-- HTML !-->
+          <button class="button-82-pushable" role="button">
+            <span class="button-82-shadow"></span>
+            <span class="button-82-edge"></span>
+            <span class="button-82-front text">
+              INICIAR SESIÓN
+            </span>
+          </button>
+
+
+
+          </div>
+        </div>
+
+      </ion-list>
+    </form>
+  </div>
+</ion-content>

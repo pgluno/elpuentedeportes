@@ -1,0 +1,237 @@
+<ion-header class="cabecera">
+  <div class="container">
+    <div>Productos</div>
+  </div>
+</ion-header>
+
+<ion-content>
+  <div class="contenido contenido-fondo">
+    <div class="contenido padding">
+      <div class="contenido-interior">
+        <ion-grid>
+          <ion-row>
+            <ion-col>
+              <input
+                type="text"
+                placeholder="Nombre"
+                class="form-control"
+                [(ngModel)]="nombre"
+              />
+            </ion-col>
+
+            <ion-col>
+              <input
+                type="text"
+                placeholder="Color"
+                class="form-control"
+                [(ngModel)]="color"
+              />
+            </ion-col>
+
+          </ion-row>
+
+          <ion-row>
+
+            <ion-col>
+              <div *ngFor="let productos of productos |async; let i=index">
+                <div>
+                  <select class="form-control" [(ngModel)]="categoria">
+                    <option value="-">Selecciona una categoría</option>
+                    <ng-container
+                      *ngFor="let categoria of productos.categorias"
+                    >
+                      <option value="{{ categoria.id }}">
+                        {{ categoria.nombre }}
+                      </option>
+                    </ng-container>
+                  </select>
+                </div>
+              </div>
+            </ion-col>
+
+            <ion-col>
+              <div *ngFor="let productos of productos |async; let i=index">
+                <div>
+                  <select class="form-control" [(ngModel)]="talla">
+                    <option value="-">Selecciona una talla</option>
+                    <ng-container *ngFor="let talla of productos.tallas">
+                      <option value="{{ talla.nombre }}">{{ talla.nombre }}</option>
+                    </ng-container>
+                  </select>
+                </div>
+              </div>
+            </ion-col>
+
+
+          </ion-row>
+
+          <ion-row>
+
+            <ion-col>
+              <select name="" class="form-control" [(ngModel)]="tipo_uniforme">
+                <option value="-">Selecciona un tipo de uniforme</option>
+                <option value="niño">Niño</option>
+                <option value="adulto">Adulto</option>
+              </select>
+            </ion-col>
+
+            <ion-col>
+              <select name="" class="form-control" [(ngModel)]="tipo_manga">
+                <option value="-">Selecciona un tipo de manga</option>
+                <option value="manga chica">Manga chica</option>
+                <option value="manga larga">Manga larga</option>
+              </select>
+            </ion-col>
+
+          </ion-row>
+
+          <ion-row>
+            <ion-col>
+              <button
+                class="button-82-pushable w-100"
+                role="button"
+                (click)="buscar_productos()"
+              >
+                <span class="button-82-shadow"></span>
+                <span class="button-82-edge"></span>
+                <span class="button-82-front text"> BUSCAR </span>
+              </button>
+            </ion-col>
+          </ion-row>
+        </ion-grid>
+
+        <div class="container">
+          <div *ngFor="let productos of productos |async; let i=index ">
+            <div *ngFor="let producto of productos.productos[0].data ">
+              <ion-row>
+                <ion-col size="8">
+                  <b>Nombre:</b> {{ producto.nombre }}<br />
+                  <b>Descripción:</b>
+                  <span [innerHTML]="producto.descripcion"></span><br />
+                </ion-col>
+                <ion-col size="4">
+                  <img
+                    class="border-img"
+                    src="{{ producto.url + '/' + producto.imagen }}"
+                /></ion-col>
+              </ion-row>
+
+              <div class="cabecera-tabla">
+                <ion-row>
+                  <ion-col size="2">Cant.</ion-col>
+                  <ion-col size="5">Talla</ion-col>
+                  <ion-col size="5">Color</ion-col>
+                </ion-row>
+              </div>
+
+              <ion-row *ngFor="let existencia of producto.existencias">
+                <ng-container *ngFor="let sucursal of productos.sucursales">
+                  <ng-container *ngIf="sucursal.id == existencia.id_sucursal">
+
+                    <ion-col
+                      size="12"
+                      class="titulo_sucursal"
+                      style="background-color: #333; color: #fff"
+                    >
+                      <span class="id_producto" style="display: none"
+                        >{{ existencia.id_producto }}</span
+                      >
+                      <span class="nombre_producto" style="display: none"
+                        >{{ producto.nombre }}</span
+                      >
+                      <span class="id_existencia" style="display: none"
+                        >{{ existencia.id }}</span
+                      >
+                      <span class="sucursal_nombre">{{ sucursal.nombre }}</span>
+                    </ion-col>
+
+                  </ng-container>
+                </ng-container>
+
+                <ion-col size="2"> {{ existencia.cantidad }} </ion-col>
+
+                <ion-col size="5">
+                  <ng-container *ngFor="let talla of producto.tallas">
+                    <ng-container *ngIf="talla.id == existencia.id_talla">
+                      <span class="talla_nombre">{{ talla.nombre }}</span>
+                    </ng-container>
+                  </ng-container>
+                </ion-col>
+
+                <ion-col size="5">
+                  <ng-container *ngFor="let color of producto.colores">
+                    <ng-container *ngIf="color.id == existencia.id_color">
+                      <span class="color_nombre">{{ color.nombre }}</span>
+                    </ng-container>
+                  </ng-container>
+                </ion-col>
+
+                <ion-col size="6" class="text-center">
+                  Tipo de uniforme
+                </ion-col>
+
+                <ion-col size="6" class="text-center">
+                  Tipo de manga
+                </ion-col>
+
+                <ion-col size="6" class="text-center">
+                  <span class="tipo_uniforme_nombre">{{ existencia.tipo_uniforme }}</span>
+                </ion-col>
+
+                <ion-col size="6" class="text-center">
+                  <span class="tipo_manga_nombre">{{ existencia.tipo_manga }}</span>
+                </ion-col>
+
+                <ion-col size="3">
+                  <input
+                    type="number"
+                    value="1"
+                    class="form-control cantidad"
+                  />
+                </ion-col>
+                <ion-col size="9">
+                  <button class="btn btn-warning btn-agregar w-100">
+                    Agregar al carrito
+                  </button>
+                </ion-col>
+                <ion-col size="12"><hr /></ion-col>
+              </ion-row>
+              <!-- {{ page }} -->
+
+
+
+              <ion-row>
+                <ion-col *ngIf="productos.productos[0].prev_page_url; else columnavacia" size="6">
+                  <button (click)="navegarPagina(productos.productos[0].current_page - 1)" class="boton-pagina">
+                    Anterior
+                  </button>
+                </ion-col>
+
+                <ion-col *ngIf="productos.productos[0].next_page_url; else columnavacia" size="6">
+                  <button (click)="navegarPagina(productos.productos[0].current_page + 1)" class="boton-pagina">
+                    Siguiente
+                  </button>
+                </ion-col>
+
+                <ng-template #columnavacia>
+                  <ion-col size="6"> &nbsp; </ion-col>
+                </ng-template>
+              </ion-row>
+
+
+
+              <!-- <div *ngFor="let links of productos.links">
+                {{ links |json }}
+              </div> -->
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <a href="#" [routerLink]="['/carrito']" class="carrito">
+    <i class="fa fa-car-shopping"></i> Ver productos agregados <span>0</span>
+    <!-- Content of your floating element goes here -->
+  </a>
+</ion-content>

@@ -1,0 +1,7 @@
+{
+  "name": "elpuente",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}

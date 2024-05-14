@@ -1,0 +1,232 @@
+/*
+ * App Global CSS
+ * ----------------------------------------------------------------------------
+ * Put style rules here that you want to apply globally. These styles are for
+ * the entire app and not just one component. Additionally, this file can be
+ * used as an entry point to import other CSS/Sass files to be included in the
+ * output CSS.
+ * For more information on global stylesheets, visit the documentation:
+ * https://ionicframework.com/docs/layout/global-stylesheets
+ */
+
+/* Core CSS required for Ionic components to work properly */
+@import "@ionic/angular/css/core.css";
+
+/* Basic CSS for apps built with Ionic */
+@import "@ionic/angular/css/normalize.css";
+@import "@ionic/angular/css/structure.css";
+@import "@ionic/angular/css/typography.css";
+@import "@ionic/angular/css/display.css";
+
+/* Optional CSS utils that can be commented out */
+@import "@ionic/angular/css/padding.css";
+@import "@ionic/angular/css/float-elements.css";
+@import "@ionic/angular/css/text-alignment.css";
+@import "@ionic/angular/css/text-transformation.css";
+@import "@ionic/angular/css/flex-utils.css";
+
+.boton-pagina{
+  display: block;
+  width: 100%;
+  padding: 8px;
+  border-radius: 4px;
+  background-color: #090;
+  color: #fff;
+  text-align: center;
+  text-decoration: none;
+}
+
+.list-md{
+  background-color: #fff;
+}
+
+.carrito {
+  position: fixed;
+  bottom: 20px; /* Adjust the distance from the bottom as needed */
+  right: 20px; /* Adjust the distance from the right as needed */
+  background-color: #900; /* Set your desired background color */
+  padding: 10px;
+  text-decoration: none;
+  border-radius: 8px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Add a subtle box shadow for a floating effect */
+  border: 1px solid #fff;
+  color: #fff;
+  padding-left: 40px;
+  padding-right: 40px;
+}
+
+.descontar-inventario{
+  position: fixed;
+  bottom: 20px; /* Adjust the distance from the bottom as needed */
+  background-color: #900; /* Set your desired background color */
+  padding: 10px;
+  text-decoration: none;
+  border-radius: 8px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Add a subtle box shadow for a floating effect */
+  border: 1px solid #fff;
+  color: #fff;
+  padding-left: 40px;
+  padding-right: 40px;
+  left: 12.5%;
+}
+
+.atras{
+  position: fixed;
+  background-color: #090; /* Set your desired background color */
+  padding: 10px;
+  text-decoration: none;
+  border-radius: 8px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Add a subtle box shadow for a floating effect */
+  border: 1px solid #fff;
+  color: #fff;
+  top: 10px;
+  right: 12.5%;
+}
+
+.contenido{
+  padding-bottom: 40px;
+}
+
+hr{
+  background-color: #333;
+}
+
+
+.cabecera{
+  background-color: #000;
+  color: #fff;
+  border-bottom: 1px solid #ccc;
+  box-shadow: rgba(17, 12, 46, 0.15) 0px 48px 100px 0px;
+}
+
+// .logo-home{
+//   background-color: #000;
+// }
+
+.form-home{
+  background-color: #fff;
+  padding-top: 20px;
+  padding-bottom: 20px;
+}
+
+/* CSS */
+.button-82-pushable {
+  position: relative;
+  border: none;
+  background: transparent;
+  padding: 0;
+  cursor: pointer;
+  outline-offset: 4px;
+  transition: filter 250ms;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  font-weight: bold;
+}
+
+.button-82-shadow {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border-radius: 12px;
+  background: hsl(0deg 0% 0% / 0.25);
+  will-change: transform;
+  transform: translateY(2px);
+  transition:
+    transform
+    600ms
+    cubic-bezier(.3, .7, .4, 1);
+}
+
+.button-82-edge {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border-radius: 12px;
+  background: linear-gradient(
+    to left,
+    hsl(340deg 100% 16%) 0%,
+    hsl(340deg 100% 32%) 8%,
+    hsl(340deg 100% 32%) 92%,
+    hsl(340deg 100% 16%) 100%
+  );
+}
+
+.button-82-front {
+  display: block;
+  position: relative;
+  padding: 12px 27px;
+  border-radius: 12px;
+  font-size: 1.1rem;
+  color: white;
+  background: hsl(345deg 100% 47%);
+  will-change: transform;
+  transform: translateY(-4px);
+  transition:
+    transform
+    600ms
+    cubic-bezier(.3, .7, .4, 1);
+}
+
+@media (min-width: 768px) {
+  .button-82-front {
+    font-size: 1.25rem;
+    padding: 12px 42px;
+  }
+}
+
+.button-82-pushable:hover {
+  filter: brightness(110%);
+  -webkit-filter: brightness(110%);
+}
+
+.button-82-pushable:hover .button-82-front {
+  transform: translateY(-6px);
+  transition:
+    transform
+    250ms
+    cubic-bezier(.3, .7, .4, 1.5);
+}
+
+.button-82-pushable:active .button-82-front {
+  transform: translateY(-2px);
+  transition: transform 34ms;
+}
+
+.button-82-pushable:hover .button-82-shadow {
+  transform: translateY(4px);
+  transition:
+    transform
+    250ms
+    cubic-bezier(.3, .7, .4, 1.5);
+}
+
+.button-82-pushable:active .button-82-shadow {
+  transform: translateY(1px);
+  transition: transform 34ms;
+}
+
+.button-82-pushable:focus:not(:focus-visible) {
+  outline: none;
+}
+
+
+
+// -------------------
+
+input, select, .form-control{
+  background-color: #f1f1f1;
+  border: none;
+  border-bottom: 1px solid #ccc;
+}
+
+ion-content {
+  --background: url('assets/fondo.png') no-repeat center center fixed;
+  background-size: 100% 100%;
+  background-position: center center;
+}
+

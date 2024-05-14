@@ -1,0 +1,50 @@
+<ion-content [fullscreen]="true">
+  <div class="padding">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12">
+          <br><br>
+          <h2 class="text-center">Productos agregados</h2>
+          <hr />
+
+          <ng-container *ngFor="let producto of productos; let i = index">
+            <small>
+              <ion-row [attr.id]="'row-' + i">
+                <ion-col size="4">
+                  <input type="number" [(ngModel)]="producto.cantidad" class="form-control input-xs" />
+                </ion-col>
+                <ion-col size="8">
+                  <b>{{ producto.nombre_producto }}</b>
+                </ion-col>
+              </ion-row>
+              <ion-row>
+                <ion-col> <b>Color:</b> {{ producto.color }} </ion-col>
+                <ion-col> <b>Talla:</b> {{ producto.talla }} <br /> </ion-col>
+              </ion-row>
+              <ion-row>
+                <ion-col> <b>Tipo:</b> {{ producto.tipo_uniforme }} </ion-col>
+                <ion-col> <b>Manga:</b> {{ producto.tipo_manga }} <br /> </ion-col>
+              </ion-row>
+              <hr />
+              <ion-row>
+                <ion-col>
+                  <button class="btn-sm w-100 btn btn-danger" (click)="eliminar_producto(producto.id_existencia)"> Eliminar </button>
+                </ion-col>
+              </ion-row>
+              <hr />
+            </small>
+          </ng-container>
+
+          <button (click)="procesarPedido()" class="w-75 btn btn-success descontar-inventario">
+            Procesar pedido
+          </button>
+          <br><br>
+
+          <a href="#" class="btn btn-success atras" [routerLink]="['/productos']">
+            Atras
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</ion-content>
